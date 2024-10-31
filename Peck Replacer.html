@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peck Replacer</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #202225;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .element {
+            transform: scale(0.8); /* Scales the element to 80% of its original size */
+        }
+
+
+        .input-container {
+            border: .25em solid #40444b;
+            background-color: #40444b;
+            font-weight: bold;
+            font-size: 95%;
+            border-radius: 1em;
+            margin-bottom: 1em;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            max-width: fit-content;
+            max-height: fit-content;
+        }
+
+        .label {
+            padding: 25px;
+        }
+
+        .input-container label {
+            margin: .5em 0;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            padding: .1em;
+            cursor: pointer;
+            border-radius: 1em;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 25px;
+        }
+
+        .radio-group label:hover {
+            background-color: #556086;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            background-color: #7289da;
+        }
+
+        #results {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 3em;
+        }
+
+        #result-display {
+            display: flex;
+            align-items: center;
+            visibility: visible;
+        }
+
+        #result-display p {
+            align-content: center;
+            margin-left: 5rem;
+            margin-right: 5rem;
+            font-weight: bold;
+            background-color: #54639b;
+            border-radius: .25em;
+            padding: 1em 1em;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Terminus Code Calculator</h1>
+    <div class="input-container">
+        <div class="result1"></div>
+        <label>Select Symbol for X:</label>
+        <div class="radio-group">
+            <input type="radio" id="x1" name="x" value="00">
+            <label for="x1"><img src="https://i.imgur.com/WYoEr3d.png" alt="Option 1"></label>
+            <input type="radio" id="x2" name="x" value="11">
+            <label for="x2"><img src="https://i.imgur.com/zS8HDsH.png" alt="Option 2"></label>
+            <input type="radio" id="x3" name="x" value="10">
+            <label for="x3"><img src="https://i.imgur.com/qf8J1tO.png" alt="Option 3"></label>
+            <input type="radio" id="x4" name="x" value="22">
+            <label for="x4"><img src="https://i.imgur.com/esq8OAn.png" alt="Option 4"></label>
+            <input type="radio" id="x5" name="x" value="21">
+            <label for="x5"><img src="https://i.imgur.com/SBDfUmb.png" alt="Option 5"></label>
+            <input type="radio" id="x6" name="x" value="20">
+            <label for="x6"><img src="https://i.imgur.com/Dvs7lJU.png" alt="Option 6"></label>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <div class="result2"></div>
+        <label>Select Symbol for Y:</label>
+        <div class="radio-group">
+            <input type="radio" id="y1" name="y" value="00">
+            <label for="y1"><img src="https://i.imgur.com/WYoEr3d.png" alt="Option 1"></label>
+            <input type="radio" id="y2" name="y" value="11">
+            <label for="y2"><img src="https://i.imgur.com/zS8HDsH.png" alt="Option 2"></label>
+            <input type="radio" id="y3" name="y" value="10">
+            <label for="y3"><img src="https://i.imgur.com/qf8J1tO.png" alt="Option 3"></label>
+            <input type="radio" id="y4" name="y" value="22">
+            <label for="y4"><img src="https://i.imgur.com/esq8OAn.png" alt="Option 4"></label>
+            <input type="radio" id="y5" name="y" value="21">
+            <label for="y5"><img src="https://i.imgur.com/SBDfUmb.png" alt="Option 5"></label>
+            <input type="radio" id="y6" name="y" value="20">
+            <label for="y6"><img src="https://i.imgur.com/Dvs7lJU.png" alt="Option 6"></label>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <div class="result3"></div>
+        <label>Select Symbol for Z:</label>
+        <div class="radio-group">
+            <input type="radio" id="z1" name="z" value="00">
+            <label for="z1"><img src="https://i.imgur.com/WYoEr3d.png" alt="Option 1"></label>
+            <input type="radio" id="z2" name="z" value="11">
+            <label for="z2"><img src="https://i.imgur.com/zS8HDsH.png" alt="Option 2"></label>
+            <input type="radio" id="z3" name="z" value="10">
+            <label for="z3"><img src="https://i.imgur.com/qf8J1tO.png" alt="Option 3"></label>
+            <input type="radio" id="z4" name="z" value="22">
+            <label for="z4"><img src="https://i.imgur.com/esq8OAn.png" alt="Option 4"></label>
+            <input type="radio" id="z5" name="z" value="21">
+            <label for="z5"><img src="https://i.imgur.com/SBDfUmb.png" alt="Option 5"></label>
+            <input type="radio" id="z6" name="z" value="20">
+            <label for="z6"><img src="https://i.imgur.com/Dvs7lJU.png" alt="Option 6"></label>
+        </div>
+    </div>
+
+    <div id="results">
+        <div id="result-display">
+            <p id="result1">?</p>
+            <p id="result2">?</p>
+            <p id="result3">?</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to update results based on selected radio buttons
+        function updateResults() {
+            const x = document.querySelector('input[name="x"]:checked')?.value || null;
+            const y = document.querySelector('input[name="y"]:checked')?.value || null;
+            const z = document.querySelector('input[name="z"]:checked')?.value || null;
+
+            const result1 = x !== null ? equation1(parseInt(x)) : '?';
+            const result2 = (z !== null && y !== null) ? equation2(parseInt(z), parseInt(y)) : '?';
+            const result3 = (y !== null && z !== null && x !== null) ? equation3(parseInt(y), parseInt(z), parseInt(x)) : '?';
+
+            document.getElementById("result1").textContent = result1;
+            document.getElementById("result2").textContent = result2;
+            document.getElementById("result3").textContent = result3;
+        }
+
+        function equation1(x) {
+            return 2 * x + 11;
+        }
+
+        function equation2(z, y) {
+            return (2 * z + y) - 5;
+        }
+
+        function equation3(y, z, x) {
+            return Math.abs((y + z) - x);
+        }
+
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+            radio.addEventListener('change', updateResults);
+        });
+    </script>
+</body>
+</html>
